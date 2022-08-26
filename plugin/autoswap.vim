@@ -67,8 +67,11 @@ function! AS_HandleSwapfile (filename, swapname)
 
 	" Otherwise, open file read-only...
 	else
-		call AS_DelayedMsg('Swapfile detected, opening read-only')
-		let v:swapchoice = 'o'
+		call AS_DelayedMsg('Old swapfile detected... newer but deleted')
+		call delete(v:swapname)
+		let v:swapchoice = 'e'
+		" call AS_DelayedMsg('Swapfile detected, opening read-only')
+		" let v:swapchoice = 'o'
 	endif
 endfunction
 
